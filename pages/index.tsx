@@ -29,15 +29,15 @@ const Home: React.FC<Props> = ({ products }) => {
   useEffect(() => {
     if (!isFetching) return;
     const fetchData = async () => {
-      const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_PROD_BACKEND_URL}/api/v1/products?order_by=createdAt.desc&offset=${currentItems.length}&limit=10`
-      );
-      const fetchedProducts = res.data.data.map((product: apiProductsType) => ({
-        ...product,
-        img1: product.image1,
-        img2: product.image2,
-      }));
-      setCurrentItems((products) => [...products, ...fetchedProducts]);
+      // const res = await axios.get(
+      //   `${process.env.NEXT_PUBLIC_PROD_BACKEND_URL}/api/v1/products?order_by=createdAt.desc&offset=${currentItems.length}&limit=10`
+      // );
+      // const fetchedProducts = res.data.data.map((product: apiProductsType) => ({
+      //   ...product,
+      //   img1: product.image1,
+      //   img2: product.image2,
+      // }));
+      setCurrentItems((products) => [...products]);
       setIsFetching(false);
     };
     fetchData();
@@ -106,20 +106,7 @@ const Home: React.FC<Props> = ({ products }) => {
         </section>
 
         {/* ===== Best Selling Section ===== */}
-        <section className="app-max-width w-full h-full flex flex-col justify-center mt-16 mb-20">
-          <div className="flex justify-center">
-            <div className="w-3/4 sm:w-1/2 md:w-1/3 text-center mb-8">
-              <h2 className="text-3xl mb-4">{t("best_selling")}</h2>
-              <span>{t("best_selling_desc")}</span>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 lg:gap-x-12 gap-y-6 mb-10 app-x-padding">
-            <Card key={currentItems[1].id} item={currentItems[1]} />
-            <Card key={currentItems[2].id} item={currentItems[2]} />
-            <Card key={currentItems[3].id} item={currentItems[3]} />
-            <Card key={currentItems[4].id} item={currentItems[4]} />
-          </div>
-        </section>
+
 
         {/* ===== Testimonial Section ===== */}
         <section className="w-full hidden h-full py-16 md:flex flex-col items-center bg-lightgreen">
@@ -128,22 +115,7 @@ const Home: React.FC<Props> = ({ products }) => {
         </section>
 
         {/* ===== Featured Products Section ===== */}
-        <section className="app-max-width app-x-padding my-16 flex flex-col">
-          <div className="text-center mb-6">
-            <h2 className="text-3xl">{t("featured_products")}</h2>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-4 gap-y-10 sm:gap-y-6 mb-10">
-            {currentItems.map((item) => (
-              <Card key={item.id} item={item} />
-            ))}
-          </div>
-          <div className="flex justify-center">
-            <Button
-              value={!isFetching ? t("see_more") : t("loading")}
-              onClick={handleSeemore}
-            />
-          </div>
-        </section>
+
 
         <div className="border-gray100 border-b-2"></div>
 
@@ -167,22 +139,22 @@ const Home: React.FC<Props> = ({ products }) => {
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   let products: itemType[] = [];
-  const res = await axios.get(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/products?order_by=createdAt.desc&limit=10`
-  );
-  const fetchedProducts = res.data;
-  fetchedProducts.data.forEach((product: apiProductsType) => {
-    products = [
-      ...products,
-      {
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        img1: product.image1,
-        img2: product.image2,
-      },
-    ];
-  });
+  // const res = await axios.get(
+  //   `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/products?order_by=createdAt.desc&limit=10`
+  // );
+  // const fetchedProducts = res.data;
+  // fetchedProducts.data.forEach((product: apiProductsType) => {
+  //   products = [
+  //     ...products,
+  //     {
+  //       id: product.id,
+  //       name: product.name,
+  //       price: product.price,
+  //       img1: product.image1,
+  //       img2: product.image2,
+  //     },
+  //   ];
+  // });
   return {
     props: {
       messages: {
