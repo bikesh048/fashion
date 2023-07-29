@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { GetStaticProps } from "next";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
 import axios from "axios";
 
 import Header from "../components/Header/Header";
@@ -22,7 +21,7 @@ type Props = {
 };
 
 const Home: React.FC<Props> = ({ products }) => {
-  const t = useTranslations("Index");
+
   const [currentItems, setCurrentItems] = useState(products);
   const [isFetching, setIsFetching] = useState(false);
 
@@ -72,7 +71,7 @@ const Home: React.FC<Props> = ({ products }) => {
                   href="/product-category/new-arrivals"
                   extraClass="absolute bottom-10-per sm:right-10-per z-20"
                 >
-                  {t("new_arrivals")}
+                  {"new_arrivals"}
                 </LinkButton>
               </OverlayContainer>
             </div>
@@ -85,7 +84,7 @@ const Home: React.FC<Props> = ({ products }) => {
                   href="/product-category/women"
                   extraClass="absolute bottom-10-per z-20"
                 >
-                  {t("women_collection")}
+                  {"women_collection"}
                 </LinkButton>
               </OverlayContainer>
             </div>
@@ -98,7 +97,7 @@ const Home: React.FC<Props> = ({ products }) => {
                   href="/product-category/men"
                   extraClass="absolute bottom-10-per z-20"
                 >
-                  {t("men_collection")}
+                  {"men_collection"}
                 </LinkButton>
               </OverlayContainer>
             </div>
@@ -110,7 +109,7 @@ const Home: React.FC<Props> = ({ products }) => {
 
         {/* ===== Testimonial Section ===== */}
         <section className="w-full hidden h-full py-16 md:flex flex-col items-center bg-lightgreen">
-          <h2 className="text-3xl">{t("testimonial")}</h2>
+          <h2 className="text-3xl">{"testimonial"}</h2>
           <TestiSlider />
         </section>
 
@@ -122,8 +121,8 @@ const Home: React.FC<Props> = ({ products }) => {
         {/* ===== Our Shop Section */}
         <section className="app-max-width mt-16 mb-20 flex flex-col justify-center items-center text-center">
           <div className="textBox w-3/4 md:w-2/4 lg:w-2/5 mb-6">
-            <h2 className="text-3xl mb-6">{t("our_shop")}</h2>
-            <span className="w-full">{t("our_shop_desc")}</span>
+            <h2 className="text-3xl mb-6">{"our_shop"}</h2>
+            <span className="w-full">{"our_shop_desc"}</span>
           </div>
           <div className="w-full app-x-padding flex justify-center">
             <Image src={ourShop} alt="Our Shop" />
