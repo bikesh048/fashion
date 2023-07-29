@@ -136,7 +136,7 @@ const Home: React.FC<Props> = ({ products }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getStaticProps: GetStaticProps = async () => {
   let products: itemType[] = [];
   // const res = await axios.get(
   //   `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/products?order_by=createdAt.desc&limit=10`
@@ -158,7 +158,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     props: {
       messages: {
         // ...require(`../messages/index/${locale}.json`),
-        ...require(`../messages/common/${locale}.json`),
+        ...require(`../messages/common/en.json`),
       },
       products,
     }, // will be passed to the page component as props
